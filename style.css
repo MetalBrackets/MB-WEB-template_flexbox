@@ -1,0 +1,141 @@
+/*//////////////////
+// MISE EN FORME */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/*/////////////////
+// MISE EN PAGE */
+.page, header, footer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.page {
+    height: 100%;
+    color: #3c3c3b;
+    font-size: 20px;
+    background-color: #FFF;
+    align-items: space-between;
+    align-content: space-between;
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
+}
+
+.container-center {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.container-between {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    justify-content: space-between;
+}
+
+.item-center { width: 45%; }
+
+footer {
+    width: 100%;
+    color:#fff;
+    margin-top: 6rem;
+    padding:2rem;
+    background-color: #213f77;
+}
+
+header {
+    width: 100%;
+    color:#fff;
+    padding:2rem;
+    background-color: #213f77;
+}
+
+/*/////////
+// FONT */
+h1, h2, h3, h4, .title {
+    font-size: 45px;
+    font-weight: 900;
+    margin: 2rem 0;
+}
+
+h1:before {
+    content: "";
+    display: inline-block;
+    transform: translate(-20px, 10px);
+}
+
+h1:after {
+    content: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpG0mqNGNqgElMkFwgnz09HFXRX7hGsZKc8w&usqp=CAU);
+    display: inline-block;
+    transform: translate(20px, 10px);
+}
+
+p { margin-bottom: 1.5rem; }
+
+.uppercase { text-transform: uppercase; }
+
+figcaption {
+  text-align : center;
+  font-size : 14px;
+}
+
+/*//////////////////////
+// Graisse 300 - 500 */
+.light { font-weight: 300; }
+
+.medium { font-weight: 500; }
+
+/*//////////////////
+// Justification */
+.center { text-align: center; }
+
+
+/*//////////
+// Image */
+img { width: 100%; }
+
+/*///////////
+// Footer */
+.social-icons a { padding:0.5rem; }
+
+.social-icons svg:hover { animation: rotate-btn .5s linear 1; }
+
+@keyframes rotate-btn {
+    0% {
+      transform: rotateY(0);
+    }
+    100% {
+      transform: rotateY(-360deg);
+    }
+  }
+
+
+/*//////////////////
+/* Media Queries */
+/* LARGE SCREEN */
+@media (min-width: 1220px) {
+    .container-center {
+        width: 910px;
+    }
+  }
+
+/* SMALL SCREEN */
+@media (max-width: 900px) {
+    .container-between {
+        width: 80%;
+        justify-content: center;
+    }
+    .item-center {
+        width: 100%;
+    }
+}
