@@ -1,0 +1,161 @@
+/*
+  ÉduCanin Saint‑Étienne — styles.css
+  Moderne, flat design, immersif mais accessible.
+*/
+
+/* Variables & thèmes */
+:root {
+  --bg: #0b1211;
+  --surface: #0f1615;
+  --card: #111a19;
+  --text: #edf6f5;
+  --muted: #b7d5d1;
+  --accent: #0f766e;
+  --accent-2: #14b8a6;
+  --ring: #99f6e4;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 16px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f6fbfa;
+    --surface: #eef6f4;
+    --card: #ffffff;
+    --text: #0b1211;
+    --muted: #33524e;
+    --accent: #0f766e;
+    --accent-2: #0ea5a0;
+    --ring: #0f766e;
+    --shadow: 0 10px 30px rgba(15,118,110,.15);
+  }
+}
+
+/* Reset doux */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: radial-gradient(1200px 800px at 20% -10%, rgba(20,184,166,.15), transparent 60%),
+              radial-gradient(1000px 700px at 120% 10%, rgba(15,118,110,.2), transparent 55%),
+              var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+.container { width: min(1100px, 90%); margin-inline: auto; }
+.flex { display: flex; }
+.center-y { align-items: center; }
+.between { justify-content: space-between; }
+.gap-2 { gap: .75rem; }
+.grid { display: grid; gap: 1.25rem; }
+.grid.two { grid-template-columns: 1fr 1fr; gap: .75rem; }
+
+@media (min-width: 880px) {
+  .hero-grid { grid-template-columns: 1.1fr .9fr; align-items: center; }
+  .contact-grid { grid-template-columns: .9fr 1.1fr; }
+  .footer-grid { grid-template-columns: 1.2fr .6fr .6fr; }
+}
+
+/* Accessibilité */
+.skip-link {
+  position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+}
+.skip-link:focus { position: static; width: auto; height: auto; padding: .5rem .75rem; background: var(--accent); color: white; border-radius: 8px; }
+
+:focus-visible {
+  outline: 3px solid var(--ring); outline-offset: 2px;
+}
+
+/* Header */
+.site-header { position: sticky; top: 0; z-index: 50; background: color-mix(in oklab, var(--surface), transparent 10%); backdrop-filter: blur(8px); border-bottom: 1px solid color-mix(in oklab, var(--muted), transparent 70%); }
+.brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--text); font-weight: 700; letter-spacing: .2px; }
+.brand-mark { font-size: 1.25rem; }
+.brand-name .accent { color: var(--accent-2); }
+
+.site-nav details { position: relative; }
+.site-nav summary { list-style: none; cursor: pointer; padding: .55rem .85rem; border: 1px solid color-mix(in oklab, var(--muted), transparent 65%); border-radius: 999px; }
+.site-nav summary::-webkit-details-marker { display: none; }
+.site-nav ul { position: absolute; right: 0; margin-top: .5rem; background: var(--card); border: 1px solid color-mix(in oklab, var(--muted), transparent 65%); border-radius: var(--radius); padding: .5rem; box-shadow: var(--shadow); min-width: 240px; }
+.site-nav li { list-style: none; }
+.site-nav a { display: block; padding: .6rem .75rem; border-radius: 10px; color: var(--text); text-decoration: none; }
+.site-nav a:hover { background: color-mix(in oklab, var(--accent), transparent 88%); }
+
+@media (min-width: 920px) {
+  .site-nav details[open] ul, .site-nav ul { position: static; display: flex; gap: .25rem; background: transparent; border: none; box-shadow: none; padding: 0; min-width: auto; }
+  .site-nav summary { display: none; }
+}
+
+/* Hero */
+.hero { padding: clamp(2rem, 6vw, 6rem) 0; }
+.hero h1 { font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1.1; margin: 0 0 1rem; }
+.lead { font-size: 1.1rem; color: var(--muted); max-width: 60ch; }
+.actions { display: flex; gap: .75rem; margin-top: 1rem; }
+.badges { display: grid; gap: .25rem; margin-top: 1rem; color: var(--muted); padding-left: 1rem; }
+.hero-media { border-radius: calc(var(--radius) + 4px); overflow: clip; box-shadow: var(--shadow); background: linear-gradient(180deg, color-mix(in oklab, var(--accent), transparent 85%), transparent); }
+.hero-media img { transform: scale(1.02); }
+.hero figcaption { padding: .5rem .75rem; font-size: .9rem; color: var(--muted); }
+
+/* Sections */
+section { padding: clamp(2rem, 5vw, 4rem) 0; }
+section > .container > h2, section > h2 { font-size: clamp(1.4rem, 2.5vw, 2rem); margin: 0 0 1rem; }
+
+/* Cartes */
+.cards { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.card { background: var(--card); border: 1px solid color-mix(in oklab, var(--muted), transparent 70%); border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow); }
+.card h3 { margin-top: 0; }
+
+/* Expériences immersives */
+.exp-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.exp-step { padding: 1rem; border-radius: var(--radius); background: linear-gradient(180deg, color-mix(in oklab, var(--accent), transparent 90%), transparent), var(--card); border: 1px solid color-mix(in oklab, var(--muted), transparent 70%); box-shadow: var(--shadow); transition: transform .5s ease, box-shadow .5s ease; will-change: transform; }
+.exp-step:hover { transform: translateY(-4px); box-shadow: 0 18px 45px rgba(0,0,0,.35); }
+
+@media (prefers-reduced-motion: reduce) {
+  .exp-step, .hero-media img { transition: none !important; transform: none !important; }
+}
+
+/* Services */
+.services { background: radial-gradient(800px 500px at 10% 0%, rgba(15,118,110,.12), transparent 60%), var(--surface); border-block: 1px solid color-mix(in oklab, var(--muted), transparent 75%); }
+.service ul { margin: .5rem 0 0; color: var(--muted); }
+
+/* Témoignages */
+.testimonials { background: linear-gradient(180deg, color-mix(in oklab, var(--accent), transparent 92%), transparent), var(--bg); }
+.quotes { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.quote blockquote { margin: 0; font-size: 1.05rem; }
+.quote figcaption { margin-top: .75rem; color: var(--muted); }
+
+/* FAQ */
+.faq details { background: var(--card); border: 1px solid color-mix(in oklab, var(--muted), transparent 70%); border-radius: var(--radius); padding: .75rem 1rem; margin-bottom: .6rem; }
+.faq summary { cursor: pointer; font-weight: 600; }
+
+/* Contact */
+.contact { background: var(--surface); border-top: 1px solid color-mix(in oklab, var(--muted), transparent 70%); }
+.form { background: var(--card); border: 1px solid color-mix(in oklab, var(--muted), transparent 70%); border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow); }
+.field { margin-bottom: .9rem; }
+.field label { display: inline-block; margin-bottom: .35rem; font-weight: 600; }
+input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+  width: 100%; padding: .65rem .75rem; border-radius: 12px; border: 1px solid color-mix(in oklab, var(--muted), transparent 65%);
+  background: color-mix(in oklab, var(--card), transparent 0%); color: var(--text);
+}
+input::placeholder, textarea::placeholder { color: color-mix(in oklab, var(--muted), transparent 10%); }
+.consent { display: flex; align-items: start; gap: .5rem; }
+.legal { font-size: .9rem; color: var(--muted); }
+
+/* Boutons */
+.btn { --_bg: var(--accent); --_fg: #fff; display: inline-block; padding: .65rem 1rem; border-radius: 999px; text-decoration: none; font-weight: 700; background: var(--_bg); color: var(--_fg); border: 1px solid color-mix(in oklab, var(--_bg), black 10%); box-shadow: 0 6px 16px rgba(15,118,110,.25); }
+.btn:hover { filter: brightness(1.05); }
+.btn--ghost { --_bg: transparent; --_fg: var(--text); background: transparent; border: 1px solid color-mix(in oklab, var(--muted), transparent 55%); box-shadow: none; }
+.btn--soft { --_bg: color-mix(in oklab, var(--accent), transparent 80%); --_fg: var(--text); }
+
+/* Footer */
+.site-footer { padding: 2rem 0; background: var(--bg); border-top: 1px solid color-mix(in oklab, var(--muted), transparent 75%); }
+.site-footer h3 { margin-top: 0; }
+.social { display: grid; gap: .25rem; padding-left: 1rem; }
+.tiny { font-size: .85rem; color: var(--muted); }
+
+/* Utilitaires */
+.accent { color: var(--accent-2); }
