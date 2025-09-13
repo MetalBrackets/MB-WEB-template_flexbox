@@ -139,3 +139,37 @@ img { width: 100%; }
         width: 100%;
     }
 }
+
+/*//////////////////
+/* PLACEHOLDER IMG */
+.placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #e9ecef;
+  border: 2px dashed #cfd4da;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+}
+
+.placeholder::after {
+  content: attr(data-text);
+  font-family: "Fira Sans Extra Condensed", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #6c757d;
+  font-size: clamp(14px, 2.2vw, 22px);
+}
+
+/* Variante 16:9 type 350x200 */
+.placeholder--169 {
+  aspect-ratio: 16 / 9;
+}
+
+/* ombre  */
+.placeholder {
+  box-shadow: 0 4px 16px rgba(0,0,0,.06);
+}
